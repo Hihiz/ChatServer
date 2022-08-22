@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Sockets;
+using System.Net;
 using System.Text;
 using System.Threading;
 
@@ -24,7 +24,7 @@ namespace ChatServer
             ClientObject client = clients.FirstOrDefault(c => c.Id == id);
             // удалить его из списка подключений
             if (client != null)
-                client.Remove(client);
+                clients.Remove(client);
         }
 
         // прослушивание входящих подключений
@@ -34,6 +34,7 @@ namespace ChatServer
             {
                 tcpListener = new TcpListener(IPAddress.Any, 8888);
                 tcpListener.Start();
+
                 Console.WriteLine("Сервер запущен. Ожидание подключений...");
 
                 while (true)
@@ -48,6 +49,7 @@ namespace ChatServer
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+
                 Disconnect();
             }
         }
@@ -74,6 +76,8 @@ namespace ChatServer
             {
                 clients[i].Close(); // отключение клиента
             }
+
+            Environment.Exit(0); // завершение процесса
         }
     }
 }

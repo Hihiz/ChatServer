@@ -3,12 +3,12 @@ using System.Net.Sockets;
 using System.Text;
 
 namespace ChatServer
-{
+{   
     public class ClientObject
     {
         protected internal string Id { get; private set; }
         protected internal NetworkStream Stream { get; private set; }
-        private string userName;
+        string userName;
 
         TcpClient client;
         ServerObject server; // объект сервера
@@ -26,7 +26,7 @@ namespace ChatServer
             try
             {
                 Stream = client.GetStream();
-                // получаем имя пользователя
+                // получить имя пользователя
                 string message = GetMessage();
                 userName = message;
 
@@ -34,7 +34,7 @@ namespace ChatServer
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id);
                 Console.WriteLine(message);
-                // в бесконечном цикле получаем сообщения от клиента
+                // в бесконечном цикле получить сообщения от клиента
                 while (true)
                 {
                     try
@@ -77,8 +77,8 @@ namespace ChatServer
             {
                 bytes = Stream.Read(data, 0, data.Length);
                 builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-            }
-            while (Stream.DataAvailable);
+
+            } while (Stream.DataAvailable);
 
             return builder.ToString();
         }
