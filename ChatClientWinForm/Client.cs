@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace ChatClientWinForm
 {
-    public partial class Form1 : Form
+    public partial class Client : Form
     {
-        public Form1()
+        public Client()
         {
             InitializeComponent();
         }
 
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

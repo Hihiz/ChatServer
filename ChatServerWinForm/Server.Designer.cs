@@ -1,7 +1,7 @@
 ﻿
 namespace ChatServerWinForm
 {
-    partial class Form1
+    partial class Server
     {
         /// <summary>
         ///  Required designer variable.
@@ -38,20 +38,20 @@ namespace ChatServerWinForm
             this.KeyTextBox = new System.Windows.Forms.TextBox();
             this.PortLabel = new System.Windows.Forms.Label();
             this.PortTextBox = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.ClientsDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.HideCheckBox = new System.Windows.Forms.CheckBox();
+            this.ClientsDataGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kick = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalClientsLabel = new System.Windows.Forms.Label();
             this.ClearButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LogLabel = new System.Windows.Forms.Label();
             this.DisconnectButton = new System.Windows.Forms.Button();
             this.LogTextBox = new System.Windows.Forms.TextBox();
             this.SendLabel = new System.Windows.Forms.Label();
             this.SendTextBox = new System.Windows.Forms.TextBox();
             this.VersionLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // StartButton
@@ -147,51 +147,51 @@ namespace ChatServerWinForm
             this.PortTextBox.Text = "9000";
             this.PortTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // checkBox1
+            // HideCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(470, 71);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 19);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "Hide key";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.HideCheckBox.AutoSize = true;
+            this.HideCheckBox.Location = new System.Drawing.Point(470, 71);
+            this.HideCheckBox.Name = "HideCheckBox";
+            this.HideCheckBox.Size = new System.Drawing.Size(72, 19);
+            this.HideCheckBox.TabIndex = 9;
+            this.HideCheckBox.Text = "Hide key";
+            this.HideCheckBox.UseVisualStyleBackColor = true;
             // 
-            // ClientsDataGridView1
+            // ClientsDataGridView
             // 
-            this.ClientsDataGridView1.AllowUserToAddRows = false;
-            this.ClientsDataGridView1.AllowUserToDeleteRows = false;
-            this.ClientsDataGridView1.AllowUserToResizeColumns = false;
-            this.ClientsDataGridView1.AllowUserToResizeRows = false;
-            this.ClientsDataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.ClientsDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ClientsDataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.ClientsDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.ClientsDataGridView1.ColumnHeadersHeight = 24;
-            this.ClientsDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ClientsDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClientsDataGridView.AllowUserToAddRows = false;
+            this.ClientsDataGridView.AllowUserToDeleteRows = false;
+            this.ClientsDataGridView.AllowUserToResizeColumns = false;
+            this.ClientsDataGridView.AllowUserToResizeRows = false;
+            this.ClientsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.ClientsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ClientsDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.ClientsDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.ClientsDataGridView.ColumnHeadersHeight = 24;
+            this.ClientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.ClientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Name,
             this.Kick});
-            this.ClientsDataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.ClientsDataGridView1.EnableHeadersVisualStyles = false;
-            this.ClientsDataGridView1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.ClientsDataGridView1.Location = new System.Drawing.Point(608, 9);
-            this.ClientsDataGridView1.MultiSelect = false;
-            this.ClientsDataGridView1.Name = "ClientsDataGridView1";
-            this.ClientsDataGridView1.ReadOnly = true;
-            this.ClientsDataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.ClientsDataGridView1.RowHeadersVisible = false;
-            this.ClientsDataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.ClientsDataGridView1.RowTemplate.Height = 25;
-            this.ClientsDataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ClientsDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClientsDataGridView1.ShowCellErrors = false;
-            this.ClientsDataGridView1.ShowCellToolTips = false;
-            this.ClientsDataGridView1.ShowEditingIcon = false;
-            this.ClientsDataGridView1.ShowRowErrors = false;
-            this.ClientsDataGridView1.Size = new System.Drawing.Size(280, 501);
-            this.ClientsDataGridView1.TabIndex = 10;
+            this.ClientsDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ClientsDataGridView.EnableHeadersVisualStyles = false;
+            this.ClientsDataGridView.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.ClientsDataGridView.Location = new System.Drawing.Point(608, 9);
+            this.ClientsDataGridView.MultiSelect = false;
+            this.ClientsDataGridView.Name = "ClientsDataGridView";
+            this.ClientsDataGridView.ReadOnly = true;
+            this.ClientsDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.ClientsDataGridView.RowHeadersVisible = false;
+            this.ClientsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.ClientsDataGridView.RowTemplate.Height = 25;
+            this.ClientsDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ClientsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ClientsDataGridView.ShowCellErrors = false;
+            this.ClientsDataGridView.ShowCellToolTips = false;
+            this.ClientsDataGridView.ShowEditingIcon = false;
+            this.ClientsDataGridView.ShowRowErrors = false;
+            this.ClientsDataGridView.Size = new System.Drawing.Size(280, 501);
+            this.ClientsDataGridView.TabIndex = 10;
             // 
             // ID
             // 
@@ -230,14 +230,14 @@ namespace ChatServerWinForm
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // LogLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(290, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 15);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Log";
+            this.LogLabel.AutoSize = true;
+            this.LogLabel.Location = new System.Drawing.Point(290, 147);
+            this.LogLabel.Name = "LogLabel";
+            this.LogLabel.Size = new System.Drawing.Size(27, 15);
+            this.LogLabel.TabIndex = 13;
+            this.LogLabel.Text = "Log";
             // 
             // DisconnectButton
             // 
@@ -294,11 +294,11 @@ namespace ChatServerWinForm
             this.Controls.Add(this.SendLabel);
             this.Controls.Add(this.LogTextBox);
             this.Controls.Add(this.DisconnectButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LogLabel);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.TotalClientsLabel);
-            this.Controls.Add(this.ClientsDataGridView1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.ClientsDataGridView);
+            this.Controls.Add(this.HideCheckBox);
             this.Controls.Add(this.KeyLabel);
             this.Controls.Add(this.KeyTextBox);
             this.Controls.Add(this.PortLabel);
@@ -308,10 +308,10 @@ namespace ChatServerWinForm
             this.Controls.Add(this.AddrLabel);
             this.Controls.Add(this.AddrTextBox);
             this.Controls.Add(this.StartButton);
-            this.Name = "Form1";
+            
             this.Text = "Server";
             this.TopMost = true;
-            ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,14 +328,14 @@ namespace ChatServerWinForm
         private System.Windows.Forms.TextBox KeyTextBox;
         private System.Windows.Forms.Label PortLabel;
         private System.Windows.Forms.TextBox PortTextBox;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.DataGridView ClientsDataGridView1;
+        private System.Windows.Forms.CheckBox HideCheckBox;
+        private System.Windows.Forms.DataGridView ClientsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kick;
         private System.Windows.Forms.Label TotalClientsLabel;
         private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LogLabel;
         private System.Windows.Forms.Button DisconnectButton;
         private System.Windows.Forms.TextBox LogTextBox;
         private System.Windows.Forms.Label SendLabel;
