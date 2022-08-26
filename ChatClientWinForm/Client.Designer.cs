@@ -164,7 +164,7 @@ namespace ChatClientWinForm
             // VersionLabel
             // 
             this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Location = new System.Drawing.Point(564, 448);
+            this.VersionLabel.Location = new System.Drawing.Point(569, 446);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(28, 15);
             this.VersionLabel.TabIndex = 23;
@@ -172,7 +172,7 @@ namespace ChatClientWinForm
             // 
             // SendTextBox
             // 
-            this.SendTextBox.Location = new System.Drawing.Point(7, 466);
+            this.SendTextBox.Location = new System.Drawing.Point(12, 464);
             this.SendTextBox.Name = "SendTextBox";
             this.SendTextBox.Size = new System.Drawing.Size(590, 23);
             this.SendTextBox.TabIndex = 22;
@@ -180,7 +180,7 @@ namespace ChatClientWinForm
             // SendLabel
             // 
             this.SendLabel.AutoSize = true;
-            this.SendLabel.Location = new System.Drawing.Point(7, 447);
+            this.SendLabel.Location = new System.Drawing.Point(12, 445);
             this.SendLabel.Name = "SendLabel";
             this.SendLabel.Size = new System.Drawing.Size(33, 15);
             this.SendLabel.TabIndex = 21;
@@ -188,7 +188,7 @@ namespace ChatClientWinForm
             // 
             // LogTextBox
             // 
-            this.LogTextBox.Location = new System.Drawing.Point(7, 155);
+            this.LogTextBox.Location = new System.Drawing.Point(12, 153);
             this.LogTextBox.Multiline = true;
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
@@ -199,7 +199,7 @@ namespace ChatClientWinForm
             // LogLabel
             // 
             this.LogLabel.AutoSize = true;
-            this.LogLabel.Location = new System.Drawing.Point(288, 124);
+            this.LogLabel.Location = new System.Drawing.Point(293, 122);
             this.LogLabel.Name = "LogLabel";
             this.LogLabel.Size = new System.Drawing.Size(27, 15);
             this.LogLabel.TabIndex = 24;
@@ -209,7 +209,7 @@ namespace ChatClientWinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 499);
+            this.ClientSize = new System.Drawing.Size(610, 494);
             this.Controls.Add(this.LogLabel);
             this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.SendTextBox);

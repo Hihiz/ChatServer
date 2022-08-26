@@ -284,7 +284,7 @@ namespace ChatServerWinForm
             this.VersionLabel.TabIndex = 18;
             this.VersionLabel.Text = "v1.5";
             // 
-            // Form1
+            // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -308,7 +308,7 @@ namespace ChatServerWinForm
             this.Controls.Add(this.AddrLabel);
             this.Controls.Add(this.AddrTextBox);
             this.Controls.Add(this.StartButton);
-            
+       
             this.Text = "Server";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView)).EndInit();
