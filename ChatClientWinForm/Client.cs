@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -143,6 +144,84 @@ namespace ChatClientWinForm
             }
         }
 
+        private void ReadAuth(IAsyncResult result)
+        {
+            int bytes = 0;
+
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    bytes = obj.stream.EndRead(result);
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
+                }
+            }
+            if (bytes > 0)
+            {
+                obj.data.AppendFormat("{0}", Encoding.UTF8.GetString(obj.buffer, 0, bytes));
+
+                try
+                {
+                    if (obj.stream.DataAvailable)
+                    {
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), null);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    obj.data.Clear();
+                    Log(ErrorMsg(ex.Message));
+                    obj.handle.Set();
+                }
+            }
+            else
+            {
+                obj.client.Close();
+                obj.handle.Set();
+            }
+        }
+
+        // функция авторизации
+        private bool Authorize()
+        {
+            bool success = false;
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("username", obj.userName);
+            data.Add("key", obj.key);
+
+            while (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(ReadAuth), null);
+                    obj.handle.WaitOne();
+                    if (connected)
+                    {
+                        success = true;
+                        break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
+                }
+            }
+            if (!connected)
+            {
+                Log(SystemMsg("Неавторизованный"));
+            }
+            return success;
+        }
+
+        private void Connection(IPAddress ip, int port, string userName, string text)
+        {
+            throw new NotImplementedException();
+        }
+
         // кнопка подключения
         private void ConnectButton_Click(object sender, EventArgs e)
         {
@@ -217,6 +296,10 @@ namespace ChatClientWinForm
                 try
                 {
                     obj.stream.EndWrite(result);
+                }
+                catch (Exception ex)
+                {
+
                 }
             }
         }
