@@ -15,12 +15,13 @@ namespace ChatClientWinForm
         // клиент
         private Thread client = null;
 
+        // клиент 
         private struct MyClient
         {
             public string userName;
             public string key;
             public TcpClient client;
-            NetworkStream stream;
+            public NetworkStream stream;
             public byte[] buffer;
             public StringBuilder data;
             public EventWaitHandle handle;
@@ -35,7 +36,114 @@ namespace ChatClientWinForm
             InitializeComponent();
         }
 
+        private void Log(string msg = "") // очистить лог если нету сообщения
+        {
+            if (!exit)
+            {
+                LogTextBox.Invoke((MethodInvoker)delegate
+                {
+                    if (msg.Length > 0)
+                    {
+                        LogTextBox.AppendText(string.Format("[ {0} ] {1}{2}", DateTime.Now.ToString("HH:mm"), msg, Environment.NewLine));
+                    }
+                    else
+                    {
+                        LogTextBox.Clear();
+                    }
+                });
+            }
+        }
+
+        // сообщение о ошибке
+        private string ErrorMsg(string msg)
+        {
+            return string.Format("ERROR: {0}", msg);
+        }
+
+        // системное сообщение
+        private string SystemMsg(string msg)
+        {
+            return string.Format("SYSTEM: {0}", msg);
+        }
+
         // подключение
+        private void Connected(bool status)
+        {
+            if (!exit)
+            {
+                ConnectButton.Invoke((MethodInvoker)delegate
+                {
+                    connected = status;
+
+                    if (status)
+                    {
+                        AddrTextBox.Enabled = false;
+                        PortTextBox.Enabled = false;
+                        UserNameTextBox.Enabled = false;
+                        KeyTextBox.Enabled = false;
+                        ConnectButton.Text = "Disconnect";
+                        Log(SystemMsg("You are now connected"));
+                    }
+                    else
+                    {
+                        AddrTextBox.Enabled = true;
+                        PortTextBox.Enabled = true;
+                        UserNameTextBox.Enabled = true;
+                        KeyTextBox.Enabled = true;
+                        ConnectButton.Text = "Connect";
+                        Log(SystemMsg("You are now disconnected"));
+                    }
+                });
+            }
+        }
+
+        private void Read(IAsyncResult result)
+        {
+            int bytes = 0;
+
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    bytes = obj.stream.EndRead(result);
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
+                }
+            }
+            if (bytes > 0)
+            {
+                obj.data.AppendFormat("{0}", Encoding.UTF8.GetString(obj.buffer, 0, bytes));
+
+                try
+                {
+                    if (obj.stream.DataAvailable)
+                    {
+                        obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), null);
+                    }
+                    else
+                    {
+                        Log(obj.data.ToString());
+                        obj.data.Clear();
+                        obj.handle.Set();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    obj.data.Clear();
+                    Log(ErrorMsg(ex.Message));
+                    obj.handle.Set();
+                }
+            }
+            else
+            {
+                obj.client.Close();
+                obj.handle.Set();
+            }
+        }
+
+        // кнопка подключения
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             if (connected)
@@ -100,41 +208,19 @@ namespace ChatClientWinForm
                     client.Start();
                 }
             }
-
         }
 
-        private void Connection(IPAddress ip, int port, string userName, string text)
+        private void Write(IAsyncResult result)
         {
-            throw new NotImplementedException();
-        }
-
-        private string ErrorMsg(string msg)
-        {
-            return string.Format("ERROR: {0}", msg);
-        }
-
-        private string SystemMsg(string msg)
-        {
-            return string.Format("SYSTEM: {0}", msg);
-        }
-
-
-        private void Log(string msg = "") // очистить лог если нету сообщения
-        {
-            if (!exit)
+            if (obj.client.Connected)
             {
-                LogTextBox.Invoke((MethodInvoker)delegate
+                try
                 {
-                    if (msg.Length > 0)
-                    {
-                        LogTextBox.AppendText(string.Format("[ {0} ] {1}{2}", DateTime.Now.ToString("HH:mm"), msg, Environment.NewLine));
-                    }
-                    else
-                    {
-                        LogTextBox.Clear();
-                    }
-                });
+                    obj.stream.EndWrite(result);
+                }
             }
         }
+
+
     }
 }
