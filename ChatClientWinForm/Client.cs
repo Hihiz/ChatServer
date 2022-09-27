@@ -304,6 +304,51 @@ namespace ChatClientWinForm
             }
         }
 
+        private void BeginWrite(string msg)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(msg);
+            if (obj.client.Connected)
+            {
+                try
+                {
+                    obj.stream.BeginWrite(buffer, 0, buffer.Length, new AsyncCallback(Write), null);
+                }
+                catch (Exception ex)
+                {
+                    Log(ErrorMsg(ex.Message));
+                }
+            }
+        }
 
+        private void Send(string msg)
+        {
+            if (send == null || send.IsCompleted)
+            {
+                send = Task.Factory.StartNew(() => BeginWrite(msg));
+            }
+            else
+            {
+                send.ContinueWith(antecendent => BeginWrite(msg));
+            }
+        }
+
+        private void SendTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                if (SendTextBox.Text.Length > 0)
+                {
+                    string msg = SendTextBox.Text;
+                    SendTextBox.Clear();
+                    Log(string.Format("{0} (You): {1}", obj.userName, msg));
+                    if (connected)
+                    {
+                        Send(msg);
+                    }
+                }
+            }
+        }
     }
 }
