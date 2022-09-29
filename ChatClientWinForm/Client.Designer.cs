@@ -160,6 +160,7 @@ namespace ChatClientWinForm
             this.ClearButton.TabStop = false;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // VersionLabel
             // 
@@ -229,6 +230,7 @@ namespace ChatClientWinForm
             this.Controls.Add(this.ConnectButton);
             this.Name = "Client";
             this.Text = "Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Client_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

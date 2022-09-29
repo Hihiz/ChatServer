@@ -339,7 +339,7 @@ namespace ChatClientWinForm
                 e.Handled = true;
                 e.SuppressKeyPress = true;
                 if (SendTextBox.Text.Length > 0)
-                {
+                {  
                     string msg = SendTextBox.Text;
                     SendTextBox.Clear();
                     Log(string.Format("{0} (You): {1}", obj.userName, msg));
@@ -349,6 +349,18 @@ namespace ChatClientWinForm
                     }
                 }
             }
+        }
+
+        private void Client_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            exit = true;
+            if (connected)
+                obj.client.Close();
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            Log();
         }
     }
 }
