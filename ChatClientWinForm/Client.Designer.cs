@@ -176,6 +176,7 @@ namespace ChatClientWinForm
             this.SendTextBox.Name = "SendTextBox";
             this.SendTextBox.Size = new System.Drawing.Size(590, 23);
             this.SendTextBox.TabIndex = 22;
+            this.SendTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SendTextBox_KeyDown_1);
             // 
             // SendLabel
             // 

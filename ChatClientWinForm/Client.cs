@@ -332,7 +332,7 @@ namespace ChatClientWinForm
             }
         }
 
-        private void SendTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void SendTextBox_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
