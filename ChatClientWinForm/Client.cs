@@ -339,7 +339,7 @@ namespace ChatClientWinForm
                 e.Handled = true;
                 e.SuppressKeyPress = true;
                 if (SendTextBox.Text.Length > 0)
-                {  
+                {
                     string msg = SendTextBox.Text;
                     SendTextBox.Clear();
                     Log(string.Format("{0} (You): {1}", obj.userName, msg));
@@ -361,6 +361,14 @@ namespace ChatClientWinForm
         private void ClearButton_Click(object sender, EventArgs e)
         {
             Log();
+        }
+
+        private void HideCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (KeyTextBox.PasswordChar == '*')
+                KeyTextBox.PasswordChar = '\0';
+            else
+                KeyTextBox.PasswordChar = '*';
         }
     }
 }

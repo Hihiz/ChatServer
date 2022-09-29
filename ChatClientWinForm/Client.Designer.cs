@@ -67,6 +67,7 @@ namespace ChatClientWinForm
             this.HideCheckBox.TabIndex = 18;
             this.HideCheckBox.Text = "Hide key";
             this.HideCheckBox.UseVisualStyleBackColor = true;
+            this.HideCheckBox.CheckedChanged += new System.EventHandler(this.HideCheckBox_CheckedChanged);
             // 
             // KeyLabel
             // 
