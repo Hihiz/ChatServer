@@ -218,12 +218,12 @@ namespace ChatClientWinForm
             return success;
         }
 
-        private void Connection(IPAddress ip, int port, string userName, string text)
+        private void Connection(IPAddress ip, int port, string username, string key)
         {
             try
             {
                 obj = new MyClient();
-                obj.username = username;
+                obj.userName = username;
                 obj.key = key;
                 obj.client = new TcpClient();
                 obj.client.Connect(ip, port);
