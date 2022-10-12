@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ChatClientWinForm
 {
@@ -219,7 +220,39 @@ namespace ChatClientWinForm
 
         private void Connection(IPAddress ip, int port, string userName, string text)
         {
-            throw new NotImplementedException();
+            try
+            {
+                obj = new MyClient();
+                obj.username = username;
+                obj.key = key;
+                obj.client = new TcpClient();
+                obj.client.Connect(ip, port);
+                obj.stream = obj.client.GetStream();
+                obj.buffer = new byte[obj.client.ReceiveBufferSize];
+                obj.data = new StringBuilder();
+                obj.handle = new EventWaitHandle(false, EventResetMode.AutoReset);
+                if (Authorize())
+                {
+                    while (obj.client.Connected)
+                    {
+                        try
+                        {
+                            obj.stream.BeginRead(obj.buffer, 0, obj.buffer.Length, new AsyncCallback(Read), null);
+                            obj.handle.WaitOne();
+                        }
+                        catch (Exception ex)
+                        {
+                            Log(ErrorMsg(ex.Message));
+                        }
+                    }
+                    obj.client.Close();
+                    Connected(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(ErrorMsg(ex.Message));
+            }
         }
 
         // кнопка подключения

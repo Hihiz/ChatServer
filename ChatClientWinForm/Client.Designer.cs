@@ -191,7 +191,7 @@ namespace ChatClientWinForm
             // 
             // LogTextBox
             // 
-            this.LogTextBox.Location = new System.Drawing.Point(12, 153);
+            this.LogTextBox.Location = new System.Drawing.Point(12, 140);
             this.LogTextBox.Multiline = true;
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
